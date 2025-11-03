@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        // loader: () => fetch('http://localhost:3000/latest-models')
+       loader:()=>fetch("http://localhost:3000/latest-models")
       },
       {
         path: "/all-models",
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
             <ModelDetails />
           </PrivateRoute>
         ),
-        // loader: ({params}) => fetch(`http://localhost:3000/models/${params.id}`)
+       loader:({params})=>fetch(`http://localhost:3000/models/${params.id}`)
       },
 
       {
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
             <UpdateModel />
           </PrivateRoute>
         ),
-        // loader: ({params}) => fetch(`http://localhost:3000/models/${params.id}`)
+      loader:({params})=>fetch(`http://localhost:3000/models/${params.id}`)
       },
       {
         path: "/auth/login",

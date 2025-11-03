@@ -1,10 +1,13 @@
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useLoaderData } from "react-router";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const UpdateModel = () => {
-  const data = useLoaderData();
-  const model = data.result;
+
+const data = useLoaderData();
+const model = data.result;
+console.log(model)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,25 +17,26 @@ const UpdateModel = () => {
       category: e.target.category.value,
       description: e.target.description.value,
       thumbnail: e.target.thumbnail.value,
+     
     };
-
     fetch(`http://localhost:3000/models/${model._id}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        "content-type": "application/json",
       },
       body: JSON.stringify(formData),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        toast.success("Successfully updated!");
+        toast.success("successfully Updated")
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+ 
 
   return (
     <div className="card bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
@@ -94,7 +98,7 @@ const UpdateModel = () => {
             <input
               type="url"
               name="thumbnail"
-              defaultValue={model.thumbnail}
+              defaultValue={model.thumbnailUrl}
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="https://example.com/image.jpg"
@@ -103,7 +107,7 @@ const UpdateModel = () => {
 
           {/* Submit Button */}
           <button
-       
+      //  onClick={handleDelete}
             type="submit"
             className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700"
           >

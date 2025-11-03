@@ -2,12 +2,11 @@ import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const AddModal = () => {
-
-  const { user } = use(AuthContext)
-
+  const { user } = use(AuthContext);
+  console.log(user);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const formData = {
       name: e.target.name.value,
@@ -16,27 +15,23 @@ const AddModal = () => {
       thumbnail: e.target.thumbnail.value,
       created_at: new Date(),
       downloads: 0,
-      created_by: user.email
-    }
-
-    fetch('http://localhost:3000/models', {
+      created_by: user.email,
+    };
+    fetch("http://localhost:3000/models", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "content-type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     })
-    .then(res => res.json())
-    .then(data=> {
-      console.log(data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-   
-
-  }
-
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
@@ -85,7 +80,7 @@ const AddModal = () => {
               name="description"
               required
               rows="3"
-             className="textarea w-full rounded-2xl focus:border-0 focus:outline-gray-200 h-[250px]"
+              className="textarea w-full rounded-2xl focus:border-0 focus:outline-gray-200 h-[250px]"
               placeholder="Enter description"
             ></textarea>
           </div>
