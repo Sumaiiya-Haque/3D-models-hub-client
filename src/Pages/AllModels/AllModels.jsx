@@ -11,7 +11,10 @@ const AllModels = () => {
       <p className=" text-center mb-10 ">Explore 3d models.</p>
 
       <div className="grid grid-cols-3 lg:grid-cols-4 gap-3">
-         {data.map(model => <ModelCard key={model._id} model={model}/>)}
+        {
+          data?.map(model=> <ModelCard key={model._id} model={model}></ModelCard>)
+        }
+        
       </div>
     </div>
   );
