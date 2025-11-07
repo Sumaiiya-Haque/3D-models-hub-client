@@ -49,7 +49,11 @@ export const router = createBrowserRouter([
             <ModelDetails />
           </PrivateRoute>
         ),
-       loader:({params})=>fetch(`http://localhost:3000/models/${params.id}`)
+      //  loader:({params})=>fetch(`http://localhost:3000/models/${params.id}`,{
+      //   headers:{
+      //     authorization:"hello"
+      //   }
+      //  })
       },
 
       {
